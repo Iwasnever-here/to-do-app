@@ -20,9 +20,9 @@ const Form = ({ setTodos }) => {
       console.log("Todo created:", result.data);
       setTask('');
       if (setTodos) {
-        setTodos(prev => [...prev, result.data]); // update local state
+        setTodos(prev => [...prev, result.data]);
       } else {
-        location.reload(); // fallback if setTodos not passed
+        location.reload(); 
       }
     })
     .catch(error => {

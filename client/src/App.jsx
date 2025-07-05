@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";  // Make sure you have this component
+import RegisterForm from "./components/RegisterForm"; 
 import ToDoSection from "./components/ToDoSection";
 import Form from "./components/Form";
 import DateSection from "./components/DateSection";
@@ -10,14 +10,14 @@ import LogoutButton from "./components/LogOutButton";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [showRegister, setShowRegister] = useState(false);  // <-- Added this line
+  const [showRegister, setShowRegister] = useState(false); 
 
   useEffect(() => {
     // Check if token exists and try to fetch user info or just set user from token (optional)
     const token = localStorage.getItem("token");
     if (token) {
-      // Optionally, verify token or fetch user profile here
-      setUser({}); // Or fetch user info from backend
+    
+      setUser({});
     }
   }, []);
 
@@ -35,13 +35,16 @@ function App() {
   if (!user) {
     return showRegister ? (
       <RegisterForm
-        onRegisterSuccess={() => setShowRegister(false)}  // Go back to login after successful register
-        onCancel={() => setShowRegister(false)}           // Go back to login on cancel
+      // Go back to login after successful register
+        onRegisterSuccess={() => setShowRegister(false)} 
+        // Go back to login on cancel
+        onCancel={() => setShowRegister(false)}           
       />
     ) : (
       <LoginForm
         setUser={setUser}
-        onShowRegister={() => setShowRegister(true)}      // Show register form when clicked
+        // Show register form when clicked
+        onShowRegister={() => setShowRegister(true)}      
       />
     );
   }

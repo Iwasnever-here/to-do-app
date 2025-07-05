@@ -16,15 +16,15 @@ const ToDoSection = () => {
 }, []);
 
 const handleEdit = (id) => {
-  const token = localStorage.getItem("token"); // Get token from localStorage
+  const token = localStorage.getItem("token"); 
 
   axios.put(`http://localhost:3001/api/todos/update/${id}`, null, {
     headers: {
-      Authorization: `Bearer ${token}`, // Include token in the Authorization header
+      Authorization: `Bearer ${token}`,
     },
   })
   .then((result) => {
-    location.reload(); // Reload to reflect the change
+    location.reload();
   })
   .catch((error) => {
     console.error("Update failed:", error);
