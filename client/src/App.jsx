@@ -13,7 +13,7 @@ function App() {
   const [showRegister, setShowRegister] = useState(false); 
 
   useEffect(() => {
-    // Check if token exists and try to fetch user info or just set user from token (optional)
+  
     const token = localStorage.getItem("token");
     if (token) {
     
