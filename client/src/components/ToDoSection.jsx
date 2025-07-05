@@ -8,7 +8,7 @@ const ToDoSection = () => {
   const [todos, setTodos] = useState([])
   const token = localStorage.getItem("token");
   useEffect(() => {
-  axios.get('http://localhost:3001/api/todos/', {
+  axios.get('https://to-do-app-bae5.onrender.com/api/todos/', {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(result => setTodos(result.data))
@@ -18,7 +18,7 @@ const ToDoSection = () => {
 const handleEdit = (id) => {
   const token = localStorage.getItem("token"); 
 
-  axios.put(`http://localhost:3001/api/todos/update/${id}`, null, {
+  axios.put(`https://to-do-app-bae5.onrender.com/api/todos/update/${id}`, null, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

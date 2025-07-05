@@ -9,7 +9,9 @@ const todoRoutes = require("./routes/todos");  // ✅ import todo routes
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://to-do-app-bae5.onrender.com"
+}));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
