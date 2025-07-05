@@ -7,6 +7,7 @@ function LoginForm({ setUser, onShowRegister }) {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
+    console.log("you made it")
     e.preventDefault();
     setMessage("");
     try {
