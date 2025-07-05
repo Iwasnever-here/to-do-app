@@ -6,7 +6,7 @@ const ProgressSection = () => {
     const [completed, setCompleted] = useState(0);
 
 useEffect ( () => {
-    axios.get('hhttps://to-do-app-bae5.onrender.com/api/todos/progress')
+    axios.get('http://localhost:3001/api/todos/progress')
 
     .then(result => {
         setTotal(result.data.total)

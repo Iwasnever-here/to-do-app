@@ -23,7 +23,7 @@ function App() {
 
   const handleDelete = () => {
     axios
-      .delete("https://to-do-app-bae5.onrender.com/api/todos/delete", {
+      .delete("http://localhost:3001/api/todos/delete", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then(() => {

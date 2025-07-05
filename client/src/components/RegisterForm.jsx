@@ -11,7 +11,7 @@ function RegisterForm({ onRegisterSuccess, onCancel }) {
     e.preventDefault();
     setMessage("");
     try {
-      const res = await axios.post("https://to-do-app-bae5.onrender.com/api/auth/register", {
+      const res = await axios.post("http://localhost:3001/auth/register", {
         name,
         email,
         password,

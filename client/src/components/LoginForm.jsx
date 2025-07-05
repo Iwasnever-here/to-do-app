@@ -7,11 +7,10 @@ function LoginForm({ setUser, onShowRegister }) {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
-    console.log("you made it")
     e.preventDefault();
     setMessage("");
     try {
-      const res = await axios.post("https://to-do-app-bae5.onrender.com/api/auth/login", {
+      const res = await axios.post("http://localhost:3001/api/auth/login", {
         email,
         password,
       });
