@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import "tailwindcss";
+
+@theme{
+  --color-asparagus : #7BA05B;
+  --color-dustgreen : #DDE26A;
+  --color-babypowder: #FEFEFA;
+  --color-spacesparkle: #4A646C;
+  --font-pixelifysans: 'Pixelify Sans', sans-serif;
+
+}
+
+.part {
+  @apply border border-solid border-dustgreen border-5 rounded-3xl
+}
+
+.todos {
+  @apply text-left flex gap-10 text-lg leading-none
+}
+
+button{
+  @apply hover:cursor-pointer
+}
+
+.line-through{
+  @apply line-through
+}
+
+.all {
+  @apply shadow-xs shadow-gray-800
+}
