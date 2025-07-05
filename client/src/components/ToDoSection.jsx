@@ -15,13 +15,22 @@ const ToDoSection = () => {
     .catch(error => console.log(error));
 }, []);
 
-  const handleEdit = (id) => {
-    axios.put('http://localhost:3001/api/todos/update/'+id)
-    .then(result => {
-      location.reload()
-    })
-    .catch(error => console.log(error))
-  }
+const handleEdit = (id) => {
+  const token = localStorage.getItem("token"); // Get token from localStorage
+
+  axios.put(`http://localhost:3001/api/todos/update/${id}`, null, {
+    headers: {
+      Authorization: `Bearer ${token}`, // Include token in the Authorization header
+    },
+  })
+  .then((result) => {
+    location.reload(); // Reload to reflect the change
+  })
+  .catch((error) => {
+    console.error("Update failed:", error);
+  });
+};
+
 
   return (
     <div className=' part bg-babypowder p-5 mt-4 all'>
