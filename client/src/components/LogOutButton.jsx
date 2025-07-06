@@ -1,3 +1,5 @@
+
+//let user logout by removing token from local storage
 function LogoutButton() {
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -5,6 +7,10 @@ function LogoutButton() {
 
   };
 
+
+  ////////////////////////////////////////////////////main///////////////////////////////////////////////////////////
+
+  
   return (
     <button onClick={handleLogout} className="logout-button ml-2">
       Logout

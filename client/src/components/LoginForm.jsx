@@ -6,9 +6,10 @@ function LoginForm({ setUser, onShowRegister }) {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  //let user enter email and password to login
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
+    setMessage("hello");
     try {
       const res = await axios.post("http://localhost:3001/api/auth/login", {
         email,
@@ -24,6 +25,13 @@ function LoginForm({ setUser, onShowRegister }) {
       setMessage("Login failed");
     }
   };
+
+
+
+  ////////////////////////////////////////////////////main///////////////////////////////////////////////////////////
+
+
+
 
   return (
     <div className="text-center p-20 min-h-screen bg-asparagus font-pixelifysans text-spacesparkle ">

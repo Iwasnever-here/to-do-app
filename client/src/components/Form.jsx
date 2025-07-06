@@ -5,10 +5,13 @@ const Form = ({ setTodos }) => {
   const [task, setTask] = useState('');
   const token = localStorage.getItem("token");
 
-  const handleAdd = () => {
-    if (!task.trim()) return; // prevent empty tasks
 
-    axios.post('https://to-do-app-bae5.onrender.com/api/todos', 
+  // add to-dos from an input
+  const handleAdd = () => {
+    //prevent empty tasks
+    if (!task.trim()) return; 
+
+    axios.post('http://localhost:3001/api/todos', 
       { task: task },
       {
         headers: {
@@ -17,12 +20,11 @@ const Form = ({ setTodos }) => {
       }
     )
     .then(result => {
-      console.log("Todo created:", result.data);
       setTask('');
       if (setTodos) {
         setTodos(prev => [...prev, result.data]);
       } else {
-        location.reload(); 
+        window.dispatchEvent(new Event('todosUpdated'));
       }
     })
     .catch(error => {
@@ -30,12 +32,19 @@ const Form = ({ setTodos }) => {
     });
   };
 
+
+  ////////////////////////////////////////////////////main///////////////////////////////////////////////////////////
+
+
+
+  
+
   return (
     <div className='flex h-12 items-center mt-5'>
       <input 
         type='text' 
         className='bg-babypowder p-2 w-[60%] rounded-full flex-auto'
-        placeholder='enter task' 
+        placeholder='Type your task here' 
         value={task}
         onChange={(e) => setTask(e.target.value)} 
       />

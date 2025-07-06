@@ -11,7 +11,7 @@ function RegisterForm({ onRegisterSuccess, onCancel }) {
     e.preventDefault();
     setMessage("");
     try {
-      const res = await axios.post("http://localhost:3001/auth/register", {
+      const res = await axios.post("http://localhost:3001/api/auth/register", {
         name,
         email,
         password,
@@ -24,9 +24,13 @@ function RegisterForm({ onRegisterSuccess, onCancel }) {
         onRegisterSuccess();
       }
     } catch (error) {
-      setMessage("Registration failed");
+      setMessage(error);
     }
   };
+
+  ////////////////////////////////////////////////////main///////////////////////////////////////////////////////////
+
+  
 
   return (
     <div className="text-center p-20 min-h-screen bg-asparagus font-pixelifysans text-spacesparkle ">

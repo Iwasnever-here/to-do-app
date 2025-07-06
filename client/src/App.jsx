@@ -1,53 +1,62 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm"; 
 import ToDoSection from "./components/ToDoSection";
 import Form from "./components/Form";
 import DateSection from "./components/DateSection";
 import ProgressSection from "./components/ProgressSection";
-import axios from "axios";
 import LogoutButton from "./components/LogOutButton";
 
 function App() {
   const [user, setUser] = useState(null);
   const [showRegister, setShowRegister] = useState(false); 
 
+  // set user
   useEffect(() => {
-  
     const token = localStorage.getItem("token");
     if (token) {
-    
       setUser({});
     }
   }, []);
 
+
+// handle the deletion on todos
   const handleDelete = () => {
     axios
       .delete("http://localhost:3001/api/todos/delete", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then(() => {
-        window.location.reload();
+        // instead of refreshing the whole page I want to just update the to-do section
+        window.dispatchEvent(new Event('todosUpdated'));
       })
       .catch((error) => console.log(error));
   };
 
+  //get user - sign in / login
   if (!user) {
     return showRegister ? (
       <RegisterForm
-      // Go back to login after successful register
+      // once registered go back to the sign in page
         onRegisterSuccess={() => setShowRegister(false)} 
-        // Go back to login on cancel
         onCancel={() => setShowRegister(false)}           
       />
     ) : (
       <LoginForm
         setUser={setUser}
-        // Show register form when clicked
+        //link to register page
         onShowRegister={() => setShowRegister(true)}      
       />
     );
   }
+
+
+
+
+
+////////////////////////////////////////////////////main///////////////////////////////////////////////////////////
+
 
   return (
     <div className="text-center p-20 min-h-screen bg-asparagus font-pixelifysans text-spacesparkle flex items-center justify-center h-screen">

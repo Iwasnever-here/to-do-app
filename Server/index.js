@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 
 const authRoutes = require("./routes/auth");
-const todoRoutes = require("./routes/todos");  // ✅ import todo routes
+const todoRoutes = require("./routes/todos"); 
 
 dotenv.config();
 const app = express();
